@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
       result = fib_i(N);
    }
    
-   printf("%d \n", result);
+   printf("%d", result);
 
    return 0;
 }
