@@ -7,6 +7,7 @@ int fib_r(int n) {
     return fib_r(n - 1) + fib_r(n - 2);
 }
 
+
 int fib_i(int n) {
     if (n <= 1)
         return n;
@@ -23,11 +24,19 @@ int fib_i(int n) {
 
 int main(int argc, char *argv[]) {
    
-   int command_num = atoi(argv[1]);
-   
-   FILE *file = fopen(argv[3], "r");;
+   if (argc != 4) {
+        return 1;
+   }
 
-   int file_num;
+    int command_num = atoi(argv[1]);
+
+    FILE *file = fopen(argv[3], "r");
+
+    if (file == NULL) {
+        return 1;
+    }
+
+    int file_num;
    fscanf(file, "%d", &file_num);
    fclose(file);
 
@@ -38,11 +47,14 @@ int main(int argc, char *argv[]) {
    if (argv[2][0] == 'r') {
       result = fib_r(N);
    }
-   else {
+   else if (argv[2][0] == 'i') {
       result = fib_i(N);
    }
-   
-   printf("%d", result);
+   else {
+    return 1;
+   }
+
+   printf("%d\n", result);
 
    return 0;
 }
