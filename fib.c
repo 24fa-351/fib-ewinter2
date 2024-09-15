@@ -38,9 +38,16 @@ int main(int argc, char *argv[]) {
         fclose(file);
         return 1;
     }
+    int file_num = 0;
 
-   int file_num;
-   fscanf(file, "%d", &file_num);
+    char buffer[100]; 
+
+    if (fgets(buffer, sizeof(buffer), file) != NULL) {
+        file_num = atoi(buffer); 
+    } else {
+        printf("Error reading from file!\n");
+    }
+    
    fclose(file);
 
    int N = file_num + command_num - 1;
