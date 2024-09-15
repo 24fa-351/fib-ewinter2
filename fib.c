@@ -35,6 +35,7 @@ int main(int argc, char *argv[]) {
 
     if (file == NULL) {
         printf("Error opening file.\n");
+        fclose(file);
         return 1;
     }
 
