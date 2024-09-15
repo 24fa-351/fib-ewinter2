@@ -25,6 +25,7 @@ int fib_i(int n) {
 int main(int argc, char *argv[]) {
    
    if (argc != 4) {
+        printf("Not enough params.\n");
         return 1;
    }
 
@@ -33,10 +34,11 @@ int main(int argc, char *argv[]) {
     FILE *file = fopen(argv[3], "r");
 
     if (file == NULL) {
+        printf("Error opening file.\n");
         return 1;
     }
 
-    int file_num;
+   int file_num;
    fscanf(file, "%d", &file_num);
    fclose(file);
 
@@ -51,10 +53,11 @@ int main(int argc, char *argv[]) {
       result = fib_i(N);
    }
    else {
+    printf("Invalid method.\n");
     return 1;
    }
 
    printf("%d\n", result);
 
-   return result;
+   return 0;
 }
