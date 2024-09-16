@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
 
     int file_num = 0;
 
-    char buffer[100]; 
+    char buffer[30]; 
     if (fgets(buffer, sizeof(buffer), file) != NULL) {
         file_num = atoi(buffer); 
     } else {
