@@ -1,26 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-unsigned long long int terms[1000];
-
-unsigned long long int fib_r(unsigned long long int n) {
+int fib_r(int n) {
     if (n <= 1)
         return n;
-    if (terms[n] != 0)
-        return terms[n];
-    else {
-        terms[n] = fib_r(n - 1) + fib_r(n - 2);
- 
-        return terms[n];
-    }
+    return fib_r(n - 1) + fib_r(n - 2);
 }
 
-unsigned long long int fib_i(int n) {
+int fib_i(int n) {
     if (n <= 1)
         return n;
-    unsigned long long int a = 0;
-    unsigned long long int b = 1;
-    unsigned long long int fib;
+    int a = 0;
+    int b = 1;
+    int fib;
     for (int i = 2; i <= n; i++) {
         fib = a + b;
         a = b;
@@ -48,18 +40,13 @@ int main(int argc, char *argv[]) {
 
     int file_num = 0;
 
-    char buffer[30]; 
-    if (fgets(buffer, sizeof(buffer), file) != NULL) {
-        file_num = atoi(buffer); 
-    } else {
-        printf("Error reading file\n");
-    }
+    fscanf(file, "%d", &file_num);
 
-   fclose(file);
+    fclose(file);
 
-   int N = file_num + command_num - 1;
+    int N = file_num + command_num - 1;
    
-   unsigned long long int result;
+    int result;
 
    if (argv[2][0] == 'r') {
       result = fib_r(N);
@@ -72,7 +59,7 @@ int main(int argc, char *argv[]) {
     return 0;
    }
 
-   printf("%llu\n", result);
+   printf("%d\n", result);
 
    return 0;
 }
