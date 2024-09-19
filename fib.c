@@ -30,6 +30,9 @@ int main(int argc, char *argv[]) {
 
     int command_num = atoi(argv[1]);
 
+
+    
+
     FILE *file = fopen(argv[3], "r");
 
     if (file == NULL) {
