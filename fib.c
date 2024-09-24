@@ -12,9 +12,8 @@ int fib_i(int n) {
         return n;
     int a = 0;
     int b = 1;
-    int fib;
     for (int i = 2; i <= n; i++) {
-        fib = a + b;
+        int fib = a + b;
         a = b;
         b = fib;
     }
@@ -23,15 +22,12 @@ int fib_i(int n) {
 
 int main(int argc, char *argv[]) {
    
-   if (argc != 4) {
-        printf("Not enough params.\n");
+    if (argc != 4 || argv[2][0] == 'r' && argv[2][0] == 'i') {
+        printf("Invalid Input\n");
         return 0;
-   }
+    }
 
     int command_num = atoi(argv[1]);
-
-
-    
 
     FILE *file = fopen(argv[3], "r");
 
@@ -44,23 +40,17 @@ int main(int argc, char *argv[]) {
     int file_num = 0;
 
     fscanf(file, "%d", &file_num);
-
     fclose(file);
 
     int N = file_num + command_num - 1;
-   
     int result;
 
-   if (argv[2][0] == 'r') {
-      result = fib_r(N);
-   }
-   else if (argv[2][0] == 'i') {
-      result = fib_i(N);
-   }
-   else {
-    printf("Invalid method.\n");
-    return 0;
-   }
+    if (argv[2][0] == 'r') {
+       result = fib_r(N);
+    }
+    else {
+       result = fib_i(N);
+    }
 
    printf("%d\n", result);
 
